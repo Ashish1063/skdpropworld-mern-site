@@ -1,0 +1,43 @@
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Prerender-Token",
+          "value": "QHhhrvIPvM5gm4fHnmaT"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/sitemap.xml",
+      "destination": "https://skd-backend.onrender.com/sitemap.xml"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "https://skd-backend.onrender.com/api/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "User-Agent",
+          "value": ".*(Googlebot|bingbot|Yandex|Baidu|DuckDuckBot|facebookexternalhit|Twitterbot|Slackbot).*"
+        }
+      ],
+      "destination": "https://service.prerender.io/https://www.skdpropworld.com/:1"
+    }
+  ],
+  "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
